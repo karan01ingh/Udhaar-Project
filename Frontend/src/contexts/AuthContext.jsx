@@ -4,7 +4,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import { auth } from '../config/firebase.js';
-import axios from 'axios';
+import axios from '../utils/axios';
 
 // Create AuthContext without TypeScript typing
 const AuthContext = createContext(undefined);
