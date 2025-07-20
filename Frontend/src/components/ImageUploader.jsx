@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import {Camera,Plus,Trash} from "lucide-react";
-import axios from "axios";
+import axios from "../utils/axios";
 import toast from "react-hot-toast";
 
 const ProfileImageUploader = ({ userProfile, setUserProfile }) => {
