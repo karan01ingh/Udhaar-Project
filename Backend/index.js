@@ -18,30 +18,12 @@ dotenv.config();
 const DEBUG_URL = process.env.DEBUG_URL;
 // dotenv.config();
 const app = express();
-// 
-
-// mongoose.connection.once('open', async () => {
-//   try {
-//     await mongoose.connection.collection('users').dropIndex('uid_1');
-//     console.log('✅ Dropped uid_1 index');
-//   } catch (err) {
-//     if (err.codeName === 'IndexNotFound') {
-//       console.log('ℹ️ Index already dropped');
-//     } else {
-//       console.error('Error dropping index:', err);
-//     }
-//   }
-// });
-
+app.use(cors({
+  origin: 'https://udhaar-project.vercel.app', 
+  credentials: true                      
+}));
 // Security middleware
 app.use(helmet());
-app.use(cors({
-  
-  origin:'https://udhaar-project.vercel.app' , // this must match your frontend
-  // credentials: true
-  // origin: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : 'http://localhost:5173',
-  credentials: true
-}));
 
 // Rate limiting
 const limiter = rateLimit({
