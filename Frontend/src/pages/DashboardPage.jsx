@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import { useAuth } from "../contexts/AuthContext.jsx"
 import { useEffect } from 'react';
 import UpdateTransactionModal from '../components/upDatepop.jsx';
-import axios from 'axios';
+import axios from '..utils/axios';
 export default function DashboardPage() {
   // for the model of update pop
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
