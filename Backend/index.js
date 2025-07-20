@@ -65,6 +65,10 @@ app.use('/api/borrowers', borrowerRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/Otp',otpRoutes);
 app.use('/api/transactions',transactionRoutes);
+app.get("/", (req, res) => {
+  res.send("🎉 Udhaar backend is live!");
+});
+
 // app.use('/api/razorpay',razorpayRoutes);
 
 // Health check endpoint
