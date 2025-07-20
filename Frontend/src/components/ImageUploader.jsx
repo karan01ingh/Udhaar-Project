@@ -13,7 +13,7 @@ const ProfileImageUploader = ({ userProfile, setUserProfile }) => {
   const deleteImage =async(e) => {
   try {
     setload(true);
-    const res = await axios.put('http://localhost:3001/api/users/deleteProfileImage', {
+    const res = await axios.put('https://udhaar-project.onrender.com/api/users/deleteProfileImage', {
       userId: userProfile.id,
     }, { withCredentials: true });
     // if (res.status == 201) {
@@ -55,7 +55,7 @@ const ProfileImageUploader = ({ userProfile, setUserProfile }) => {
       const imageUrl = res.data.secure_url;
       setUserProfile((prev) => ({ ...prev, photoURL: imageUrl }));
       await axios.put(
-        "http://localhost:3001/api/users/updateProfile",
+        "https://udhaar-project.onrender.com/api/users/updateProfile",
         { userid: userProfile.id, imageurl: imageUrl },
         { withCredentials: true }
       );
