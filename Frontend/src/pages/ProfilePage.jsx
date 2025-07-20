@@ -4,7 +4,7 @@ import { User, Mail, Phone, Lock, Camera, Save } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import toast from 'react-hot-toast';
-import axios from '../utils/axios';
+import axios from "../utils/axios";
 import { useNavigate } from "react-router-dom"
 import ProfileImageUploader from "../components/ImageUploader.jsx"
 export default function ProfilePage() {
