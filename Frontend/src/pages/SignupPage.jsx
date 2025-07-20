@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import GoogleSignInButton from '../components/GoogleSignInButton.jsx';
 import { useEffect, useRef } from 'react';
-import axios from  "..utils/axios";
+import axios from  "../utils/axios";
 // import { Mail } from 'lucide-react';
 export default function SignupPage() {
   const { signup } = useAuth();
