@@ -37,8 +37,9 @@ router.post('/signup', async (req, res) => {
     );
     const datatosend={id:user._id,user: user.username,email:user.email,isPremium:user.isPremium,totalLent:user.totalLent,totalReceived:user.totalReceived,photoURL:user.photoURL,phone:user.phone}
     res.status(201).cookie('access_token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+       httpOnly: true,
+      secure:true,
+      sameSite:'None'
     }).json(
       {message: 'Signup successful',
       datatosend
@@ -149,7 +150,7 @@ router.post('/login',async(req,res)=>{
             process.env.JWT_SECRET,
             { expiresIn: '1d' }
     );
-    return res.status(201).cookie('access_token',token,{httpOnly:true}).json({message:"Login Successfylly",datatoSend});
+    return res.status(201).cookie('access_token',token,{ httpOnly: true,secure:true,sameSite:'None'}).json({message:"Login Successfylly",datatoSend});
   } catch (error) {
     return res.json({message:"Login Failed !! INTERNAL ERROR"});
   }
@@ -159,8 +160,8 @@ router.post('/logout', async (req, res) => {
   try {
     res.clearCookie('access_token', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Lax' // Or 'None' if using cross-site cookies with HTTPS
+      secure:true,
+      sameSite:'None'
     });
 
     return res.status(200).json({ message: "Logged out successfully" });
