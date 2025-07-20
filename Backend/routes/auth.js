@@ -75,8 +75,8 @@ router.post('/google', async (req, res) => {
     // 3. Set JWT token in HttpOnly cookie
     res.cookie('access_token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Lax'
+      secure:true,
+      sameSite:'None'
     });
 
     // 4. Send back user info (optional)
