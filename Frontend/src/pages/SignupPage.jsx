@@ -63,7 +63,7 @@ export default function SignupPage() {
   if (!email) return toast.error('Enter a valid email');
 
   try {
-    const response = await fetch('http://localhost:3001/api/Otp/send-otp', {
+    const response = await fetch('https://udhaar-project.onrender.com/api/Otp/send-otp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ export default function SignupPage() {
     if (otp.length < 6) return toast.error('Enter complete OTP');
 
     try {
-      await axios.post('http://localhost:3001/api/Otp/verify-otp', { email: emailForOtp, otp });
+      await axios.post('https://udhaar-project.onrender.com/api/Otp/verify-otp', { email: emailForOtp, otp });
       toast.success('Email verified!');
       setIsEmailVerified(true);
       setOtpVerified(true);
