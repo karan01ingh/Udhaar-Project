@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
-import axios from '../utils/axios';
+import axios from "..utils/axios";
 
 export default function UpdateTransactionModal({ isOpen, onClose, borrower, refresh }) {
   const formRef = useRef(null);
