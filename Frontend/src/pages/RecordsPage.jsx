@@ -16,10 +16,10 @@ export default function RecordsPage() {
     setload(true);
     try {
       const [transactionsRes, borrowerRes] = await Promise.all([
-        axios.get(`http://localhost:3001/api/transactions/${borrowerId}`, {
+        axios.get(`https://udhaar-project.onrender.com/api/transactions/${borrowerId}`, {
           withCredentials: true,
         }),
-        axios.get(`http://localhost:3001/api/borrowers/${borrowerId}/get`, {
+        axios.get(`https://udhaar-project.onrender.com/api/borrowers/${borrowerId}/get`, {
           withCredentials: true,
         }),
       ]);
