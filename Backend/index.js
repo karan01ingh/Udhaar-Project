@@ -23,6 +23,7 @@ app.use(cors({
   credentials: true                      
 }));
 // Security middleware
+app.use(cookieParser());
 app.use(helmet());
 
 // Rate limiting
@@ -34,7 +35,6 @@ app.use(limiter);
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
-app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 // MongoDB connection
 connect();
