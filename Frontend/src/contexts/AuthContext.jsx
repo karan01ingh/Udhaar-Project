@@ -31,7 +31,7 @@ export function AuthProvider({ children }) {
     // await sendEmailVerification(newUser);
 
     // Send user data to backend
-    await axios.post('http://localhost:3001/api/auth/signup',{
+    await axios.post('https://udhaar-project.onrender.com/api/auth/signup',{
       email: email,
       password:password,
       ...userData
@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
   // }
   async function login(email, password) {
   try {
-    const res = await fetch('http://localhost:3001/api/auth/login', {
+    const res = await fetch('https://udhaar-project.onrender.com/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ export function AuthProvider({ children }) {
     const result = await signInWithPopup(auth, provider);
     const googleUser = result.user;
     try {
-      const res=await axios.post('http://localhost:3001/api/auth/google', {
+      const res=await axios.post('https://udhaar-project.onrender.com/api/auth/google', {
         uid: googleUser.uid,
         email: googleUser.email,
         displayName: googleUser.displayName,
@@ -98,7 +98,7 @@ export function AuthProvider({ children }) {
 async function logout(){
   setUser(null);
   setUserProfile(null);
-  await axios.post('http://localhost:3001/api/auth/logout', null, {
+  await axios.post('https://udhaar-project.onrender.com/api/auth/logout', null, {
     withCredentials: true  // This ensures cookies (like access_token) are sent
   });
 }
@@ -107,7 +107,7 @@ async function logout(){
   // Observe authentication state
  const checkAuthWithBackend = async () => {
   try {
-    const response = await axios.get('http://localhost:3001/api/auth/me', {
+    const response = await axios.get('https://udhaar-project.onrender.com/api/auth/me', {
       withCredentials: true, // include cookies (JWT)
     });
     const user = response.data;
