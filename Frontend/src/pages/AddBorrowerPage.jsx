@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from "..utils/axios";
+import axios from "../utils/axios";
 import { toast } from 'react-hot-toast';
 export default function AddBorrowerPage() {
   const navigate = useNavigate();
