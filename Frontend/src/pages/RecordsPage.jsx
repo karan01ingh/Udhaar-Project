@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from "..utils/axios";
 import { toast } from 'react-hot-toast';
 import { motion } from 'framer-motion';
 import { ArrowLeft, DollarSign, Check, X, Calendar, Plus } from 'lucide-react';
