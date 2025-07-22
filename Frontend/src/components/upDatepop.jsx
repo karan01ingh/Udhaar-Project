@@ -14,6 +14,9 @@ export default function UpdateTransactionModal({ isOpen, onClose, borrower, refr
     const type = form.get('type');
 
     if (!amount || amount <= 0) return toast.error('Enter valid amount');
+    if (type === 'taken' && parseFloat(value) > borrower.totalDue) {
+      return toast.error(`Cannot take more than ₹${borrower.totalDue}`);
+    }
     if (description.split(/\s+/).length > 20)
       return toast.error('Keep description under 20 words');
 
