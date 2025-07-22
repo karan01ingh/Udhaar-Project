@@ -46,7 +46,7 @@ export default function DashboardPage() {
   const fetchBorrowers = async () => {
     try {
       setload(true);
-      const res = await axios.get(`https://udhaar-project.onrender.com/api/borrowers`, {
+      const res = await axios.get(`/borrowers`, {
         withCredentials: true, // important to include cookies
       });
       setBorrowers(res.data);
@@ -70,7 +70,7 @@ export default function DashboardPage() {
       // const confirmDelete = window.confirm("Are you sure you want to delete this borrower?");
       // if (!confirmDelete) return;
       await toast.promise(
-        axios.delete(`https://udhaar-project.onrender.com/api/borrowers/${deleteTargetId}/delete`, {
+        axios.delete(`/borrowers/${deleteTargetId}/delete`, {
           withCredentials: true,
         }),
         {
