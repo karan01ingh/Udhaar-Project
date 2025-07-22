@@ -19,7 +19,7 @@ export default function UpdateTransactionModal({ isOpen, onClose, borrower, refr
 
     try {
       await axios.post(
-        'https://udhaar-project.onrender.com/api/transactions',
+        '/transactions',
         {
           borrowerId: borrower._id,
           amount,
@@ -30,7 +30,7 @@ export default function UpdateTransactionModal({ isOpen, onClose, borrower, refr
         { withCredentials: true }
       );
        await axios.put(
-      `https://udhaar-project.onrender.com/api/borrowers/${borrower._id}/update`,
+      `/borrowers/${borrower._id}/update`,
       {
         amount,
         type,
