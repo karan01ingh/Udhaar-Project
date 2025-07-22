@@ -39,7 +39,7 @@ export default function UpdateAmountPage() {
         updatedAt: new Date().toISOString(),
       };
 
-      await axios.put(`https://udhaar-project.onrender.com/api/borrowers/${borrowerId}`, updatedData);
+      await axios.put(`/borrowers/${borrowerId}`, updatedData);
       toast.success("Amount updated successfully");
       navigate("/dashboard");
     } catch (err) {
