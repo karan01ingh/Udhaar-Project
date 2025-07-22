@@ -21,7 +21,7 @@ export default function ProfilePage() {
     // setLoading(true);
     setload(true);
     try {
-      const response = await axios.put('https://udhaar-project.onrender.com/api/users/profile', {
+      const response = await axios.put('/users/profile', {
         username: data.username,
         userid: user.id
       }, {
@@ -52,11 +52,11 @@ export default function ProfilePage() {
   async function verifyCurrentPassword() {
     setload(true);
     try {
-      await axios.post('https://udhaar-project.onrender.com/api/users/verify-password', {
+      await axios.post('/users/verify-password', {
         email: user.email,
         currentPassword: getValues('currentPassword')
       }, { withCredentials: true });
-      await axios.post("https://udhaar-project.onrender.com/api/Otp/send-otp", {
+      await axios.post('/Otp/send-otp', {
         email: user.email
       }, {
         withCredentials: true
@@ -89,7 +89,7 @@ export default function ProfilePage() {
     setload(true);
     try {
       const code = otp.join('');
-      await axios.post('https://udhaar-project.onrender.com/api/Otp/verify-otp', {
+      await axios.post('/Otp/verify-otp', {
         email: user.email,
         otp: code
       });
@@ -116,7 +116,7 @@ export default function ProfilePage() {
     setStep(1);
     register.currentPassword="";
     try {
-      await axios.put("https://udhaar-project.onrender.com/api/users/updatePassword", { password: data.newPassword, userid: user.id }, { withCredentials: true });
+      await axios.put('/users/updatePassword', { password: data.newPassword, userid: user.id }, { withCredentials: true });
       toast.success("Password updated Successfully");
       navigate('/profile');
     } catch (error) {
