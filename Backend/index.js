@@ -19,7 +19,7 @@ const DEBUG_URL = process.env.DEBUG_URL;
 // dotenv.config();
 const app = express();
 app.use(cors({
-  origin: 'udhaar-project.vercel.app', 
+  origin: 'https://udhaar-project.vercel.app', 
   credentials: true                      
 }));
 // Security middleware
