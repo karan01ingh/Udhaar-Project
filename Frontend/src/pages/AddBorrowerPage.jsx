@@ -59,7 +59,7 @@ export default function AddBorrowerPage() {
     if (!formData.borrowerEmail) return toast.error('Enter email first');
     setload(true);
     try {
-      await axios.post('https://udhaar-project.onrender.com/api/Otp/send-otp', { email: formData.borrowerEmail });
+      await axios.post('/Otp/send-otp', { email: formData.borrowerEmail });
       toast.success('OTP sent');
       setOtpSent(true);
     } catch (err) {
@@ -76,7 +76,7 @@ export default function AddBorrowerPage() {
     setVerifyingOtp(true);
     setload(true);
     try {
-      await axios.post('https://udhaar-project.onrender.com/api/Otp/verify-otp', { email: formData.borrowerEmail, otp: otpCode });
+      await axios.post('/Otp/verify-otp', { email: formData.borrowerEmail, otp: otpCode });
       toast.success('Email verified!');
       setOtpVerified(true);
       console.log("OTP Verified");
@@ -152,7 +152,7 @@ export default function AddBorrowerPage() {
 
   try {
     const res = await axios.post(
-      'https://udhaar-project.onrender.com/api/borrowers',
+      '/borrowers',
       {
         ...formData,
         totalBorrowed: parseFloat(formData.totalBorrowed || 0),
@@ -179,7 +179,7 @@ export default function AddBorrowerPage() {
         description: 'Initial borrow on account creation',
       };
       await axios.post(
-        'http://udhaar-project.onrender.com/api/transactions/',
+        '/transactions/',
         borrowTransaction,
         { withCredentials: true }
       );
@@ -195,7 +195,7 @@ export default function AddBorrowerPage() {
         description: 'Initial payment on account creation',
       };
       await axios.post(
-        'https://udhaar-project.onrender.com/api/transactions/',
+        '/transactions/',
         paidTransaction,
         { withCredentials: true }
       );
