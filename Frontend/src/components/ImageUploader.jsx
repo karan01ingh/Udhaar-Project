@@ -44,7 +44,7 @@ const ProfileImageUploader = ({ userProfile, setUserProfile }) => {
       const res = await axios.post(
         "https://api.cloudinary.com/v1_1/dt3qgccok/image/upload",
         formData,
-        {
+        {   withCredentials: false,
           onUploadProgress: (progressEvent) => {
             const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
             setUploadProgress(percent);
