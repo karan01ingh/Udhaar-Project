@@ -63,25 +63,32 @@ export default function SignupPage() {
   if (!email) return toast.error('Enter a valid email');
 
   try {
-    const response = await fetch('/Otp/send-otp', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email })
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.message || 'Failed to send OTP');
-    }
-
-    setEmailForOtp(email);
-    setOtpSent(true);
-    toast.success('OTP sent to your email');    
+    // const response = await fetch('/Otp/send-otp', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ email })
+    // });
+    // const response = await axios.post('/Otp/send-otp',{ email },
+    // { withCredentials: true });
+    // const result = await response.json();
+    // if (!response.ok) {
+    //   throw new Error(result.message || 'Failed to send OTP');
+    // }
+    // setEmailForOtp(email);
+    // setOtpSent(true);
+    // toast.success('OTP sent to your email');
+    const response = await axios.post(
+    '/Otp/send-otp',
+    { email },
+    { withCredentials: true }
+  );
+  const result = response.data;
+  setEmailForOtp(email);
+  setOtpSent(true);
+  toast.success(result.message || 'OTP sent to your email');
   } catch (err) {
-    console.error(err);
     toast.error(err.message || 'Failed to send OTP');
   }
 };
