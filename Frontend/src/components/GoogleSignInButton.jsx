@@ -19,7 +19,6 @@ export default function GoogleSignInButton() {
     } finally {
       setLoading(false);
     }
-    }
   };
 
   return (
