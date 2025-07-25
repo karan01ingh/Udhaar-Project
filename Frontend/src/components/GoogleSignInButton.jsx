@@ -11,6 +11,7 @@ export default function GoogleSignInButton() {
       console.log("clicked");
     setLoading(true);
     try {
+       console.log("enterning onto loginwithgoogle");
       await loginWithGoogle();
        console.log("login with google success");
       toast.success('Welcome!');
