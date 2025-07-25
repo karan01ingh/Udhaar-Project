@@ -83,6 +83,7 @@ export function AuthProvider({ children }) {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
     const googleUser = result.user;
+    console.log("googleUser",googleUser);
     try {
       const res=await axios.post('/auth/google', {
         uid: googleUser.uid,
@@ -91,6 +92,7 @@ export function AuthProvider({ children }) {
         photoURL: googleUser.photoURL
       },
       {withCredentials:true});
+      console.log("res from backend",res.data.user);
       setUser(res.data.user);
     } catch (error) {
       console.error('Error syncing with backend:', error);
