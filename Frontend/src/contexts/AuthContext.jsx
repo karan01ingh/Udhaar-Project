@@ -84,7 +84,7 @@ export function AuthProvider({ children }) {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       const googleUser = result.user;
-
+      console.log(googleUser);
       // ✅ Sync with your backend
       const res = await axios.post(
         "https://udhaar-project.onrender.com/api/auth/google",
@@ -96,7 +96,7 @@ export function AuthProvider({ children }) {
         },
         { withCredentials: true }
       );
-
+      console.log(res.data.user);
       setUser(res.data.user);
       return res.data.user;
     } catch (err) {
