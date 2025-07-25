@@ -76,24 +76,34 @@ export function AuthProvider({ children }) {
   // }
 
   // Google login
-  async function loginWithGoogle() {
-   const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
-    const googleUser = result.user;
+  // async function loginWithGoogle() {
+    
+  // }
+  const loginWithGoogle = async () => {
     try {
-      const res=await axios.post('https://udhaar-project.onrender.com/api/auth/google', {
-        uid: googleUser.uid,
-        email: googleUser.email,
-        displayName: googleUser.displayName,
-        photoURL: googleUser.photoURL
-      },
-      {withCredentials:true});
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const googleUser = result.user;
+
+      // ✅ Sync with your backend
+      const res = await axios.post(
+        "https://udhaar-project.onrender.com/api/auth/google",
+        {
+          uid: googleUser.uid,
+          email: googleUser.email,
+          displayName: googleUser.displayName,
+          photoURL: googleUser.photoURL,
+        },
+        { withCredentials: true }
+      );
+
       setUser(res.data.user);
-    } catch (error) {
-      console.error('Error syncing with backend:', error);
-      
+      return res.data.user;
+    } catch (err) {
+      console.error("Error in loginWithGoogle:", err);
+      throw err; // Let the UI handle it (toast etc.)
     }
-  }
+  };
 
   // Logout user
 async function logout(){
