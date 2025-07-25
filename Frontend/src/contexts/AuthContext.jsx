@@ -79,12 +79,12 @@ export function AuthProvider({ children }) {
   // async function loginWithGoogle() {
     
   // }
-  const loginWithGoogle = async () => {
+  async function loginWithGoogle(){
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
     const googleUser = result.user;
     try {
-      const res=await axios.post('https://udhaar-project.onrender.com/api/auth/google', {
+      const res=await axios.post('/auth/google', {
         uid: googleUser.uid,
         email: googleUser.email,
         displayName: googleUser.displayName,
@@ -95,7 +95,7 @@ export function AuthProvider({ children }) {
     } catch (error) {
       console.error('Error syncing with backend:', error);
     }
-  };
+  }
 
   // Logout user
 async function logout(){
