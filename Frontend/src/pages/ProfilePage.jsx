@@ -127,19 +127,6 @@ export default function ProfilePage() {
       // setLoading(false);
       setload(false);
     }
-    // try {
-    //   // 1. Send OTP request
-    //   await axios.post("http://localhost:3001/api/Otp/send-otp", {
-    //     email: user?.email || userProfile?.email
-    //   });
-
-    //   toast.success("OTP sent to your email.");
-    //   setShowOTPInputs(true); // show OTP fields
-    // } catch (error) {
-    //   toast.error("Failed to send OTP");
-    // } finally {
-    //   setLoading(false);
-    // }
   };
   function handleOtpKeyDown(e, idx) {
     if (e.key === 'Backspace' && !otp[idx] && idx > 0) {
