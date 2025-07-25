@@ -80,11 +80,14 @@ export function AuthProvider({ children }) {
     
   // }
   async function loginWithGoogle(){
+    console.log("entering into googleprovider");
     const provider = new GoogleAuthProvider();
+    console.log("exit from google provider");
     const result = await signInWithPopup(auth, provider);
     const googleUser = result.user;
     console.log("googleUser",googleUser);
     try {
+      console.log("entering backend");
       const res=await axios.post('/auth/google', {
         uid: googleUser.uid,
         email: googleUser.email,
