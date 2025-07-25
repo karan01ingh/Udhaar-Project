@@ -8,12 +8,9 @@ import { useEffect } from 'react';
 import UpdateTransactionModal from '../components/upDatepop.jsx';
 import axios from "../utils/axios";
 export default function DashboardPage() {
-  // for the model of update pop
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
   const [selectedBorrower, setSelectedBorrower] = useState(null);
   const [load, setload] = useState(false);
-  // 
-
   const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
@@ -66,7 +63,6 @@ export default function DashboardPage() {
     try {
       setShowConfirmModal(false);
       setload(true);
-
       // const confirmDelete = window.confirm("Are you sure you want to delete this borrower?");
       // if (!confirmDelete) return;
       await toast.promise(
@@ -286,11 +282,9 @@ export default function DashboardPage() {
           isOpen={isUpdateOpen}
           onClose={() => setIsUpdateOpen(false)}
           borrower={selectedBorrower}
-          refresh={fetchBorrowers} // optional refetch method
+          refresh={fetchBorrowers} 
         />
       </div>
-      {/* import { AnimatePresence, motion } from "framer-motion"; */}
-
       <AnimatePresence>
         {showConfirmModal && (
           <motion.div
