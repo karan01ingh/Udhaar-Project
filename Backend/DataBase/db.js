@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 // DOTENV have to be imported and a function dotenv.config() is to be called 
+// DataBase Connectivity
 import dotenv from 'dotenv'
 dotenv.config()
 const connect=async ()=>{
