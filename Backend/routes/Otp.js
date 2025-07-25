@@ -2,7 +2,7 @@ import Otp from '../models/Otp.js';
 import express,{json} from 'express';
 import nodemailer from 'nodemailer';
 const router=express.Router();
-
+// api for sending otp 
 router.post('/send-otp',async (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ message: 'Email is required' });
@@ -35,6 +35,7 @@ router.post('/send-otp',async (req, res) => {
     res.status(500).json({ message: 'Failed to send OTP', error });
   }
 });
+// api for verifying otp
 router.post('/verify-otp',async(req,res)=>{
   const { email, otp } = req.body;
   if (!email || !otp) return res.status(400).json({ message: 'Missing fields' });
