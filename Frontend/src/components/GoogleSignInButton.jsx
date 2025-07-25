@@ -4,6 +4,9 @@ import { useAuth } from '../contexts/AuthContext.jsx';
 import toast from 'react-hot-toast';
 
 export default function GoogleSignInButton() {
+   const [loading, setLoading] = useState(false);
+  const { loginWithGoogle } = useAuth();
+  const navigate = useNavigate();
    const handleGoogleSignIn = async () => {
     setLoading(true);
     try {
