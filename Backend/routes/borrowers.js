@@ -95,7 +95,8 @@ router.post('/', verifyToken, async (req, res) => {
   try {
     const { borrowerName, borrowerEmail, phoneNumber,totalBorrowed,totalPaid } = req.body;
     const existingBorrower = await Borrower.findOne({
-      borrowerEmail: borrowerEmail.toLowerCase()
+      borrowerEmail: borrowerEmail.toLowerCase(),
+      lenderId:req.user.id // filter by this lender only
     });
 
     if (existingBorrower) {
