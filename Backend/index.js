@@ -16,30 +16,22 @@ import "./routes/reminderScheduler.js";
 import './routes/overViewScheduler.js';
 dotenv.config();
 const DEBUG_URL = process.env.DEBUG_URL;
-// dotenv.config();
 const app = express();
 app.use(cors({
   origin: 'https://udhaar-project.vercel.app', 
   credentials: true                      
 }));
-// Security middleware
 app.use(cookieParser());
 app.use(helmet());
-
-// Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  max: 100 
 });
 app.use(limiter);
-
-// Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
-// MongoDB connection
+// connecting db
 connect();
-
-
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
@@ -48,16 +40,12 @@ app.use('/api/payments', paymentRoutes);
 app.use('/api/Otp',otpRoutes);
 app.use('/api/transactions',transactionRoutes);
 app.get("/", (req, res) => {
-  res.send("🎉 Udhaar backend is live!");
+  res.send("Udhaar backend is live!");
 });
-
-// app.use('/api/razorpay',razorpayRoutes);
-
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
   });
-  
   // Error handling middleware
   app.use((err, req, res, next) => {
       console.error(err.stack);
@@ -66,13 +54,10 @@ app.get('/api/health', (req, res) => {
           error: process.env.NODE_ENV === 'development' ? err.message : {}
   });
 });
-
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
-
-
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
