@@ -1,6 +1,5 @@
 import admin from 'firebase-admin';
 import 'dotenv/config';
-// Initialize Firebase Admin SDK
 if (!admin.apps.length) {
    if (
     !process.env.FIREBASE_PROJECT_ID ||
