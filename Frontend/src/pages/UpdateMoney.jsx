@@ -7,10 +7,7 @@ export default function UpdateAmountPage() {
   const navigate = useNavigate();
   const [load,setload]=useState(false);
   const [formData, setFormData] = useState({
-    // borrowerId: '64f7a1c8abc1234567890abc',       // You can pass this via URL or select from dropdown
-    // totalBorrowed: '1000',
-    // totalPaid: '500',
-        borrowerId: '',       // You can pass this via URL or select from dropdown
+        borrowerId: '', 
     totalBorrowed: '',
     totalPaid: '',
   });
