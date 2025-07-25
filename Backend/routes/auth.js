@@ -52,7 +52,10 @@ router.post('/signup', async (req, res) => {
 router.post('/google', async (req, res) => {
   try {
     const { uid, email, displayName, photoURL } = req.body;
-
+    console.log(uid);
+    console.log(email);
+    console.log(photoURL);
+    console.log(displayName);
     // 1. Find or create user
     let user = await User.findOne({ email });
     if (!user) {
