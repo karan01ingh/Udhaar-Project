@@ -10,24 +10,15 @@ export default function GoogleSignInButton() {
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
-    try {
-      const googleUser=await loginWithGoogle();
-      const res = await axios.post('/auth/google',
-      {
-        uid: googleUser.uid,
-        email: googleUser.email,
-        displayName: googleUser.displayName,
-        photoURL: googleUser.photoURL
-      },
-      { withCredentials: true }
-    );
-      setUser(res.data.user);
+     try {
+      await loginWithGoogle();
       toast.success('Welcome!');
       navigate('/dashboard');
     } catch (error) {
       toast.error('Failed to sign in with Google');
     } finally {
       setLoading(false);
+    }
     }
   };
 
