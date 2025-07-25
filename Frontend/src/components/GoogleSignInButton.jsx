@@ -10,16 +10,17 @@ export default function GoogleSignInButton() {
 
   const handleGoogleSignIn = async () => {
     setLoading(true);
-     try {
+    try {
       await loginWithGoogle();
-      toast.success('Welcome!');
-      navigate('/dashboard');
+      toast.success("Welcome!");
+      navigate("/dashboard");
     } catch (error) {
-      toast.error('Failed to sign in with Google');
+      toast.error("Failed to sign in with Google");
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <button
