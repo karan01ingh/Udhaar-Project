@@ -71,6 +71,7 @@ router.post('/premium', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
 // router for verify password
 router.post('/verify-password', async (req, res) => {
   const { email, currentPassword } = req.body;
@@ -90,6 +91,8 @@ router.post('/verify-password', async (req, res) => {
     return res.status(500).json({ message: 'Server error' });
   }
 });
+
+// route for updating password
 router.put('/updatePassword',async (req,res)=>{
   try {
     const {userid,password}=req.body;
@@ -111,6 +114,7 @@ router.put('/updatePassword',async (req,res)=>{
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+// route for updating profile
 router.put('/updateProfile',async(req,res)=>{
   try {
     const {userid,imageurl}=req.body;
@@ -128,6 +132,7 @@ router.put('/updateProfile',async(req,res)=>{
     return res.json({message:"Error in the profile update"});
   }
 });
+// route for deleteing profile image
 router.put('/deleteProfileImage',async(req,res)=>{
   try {
     const {userId}=req.body;
