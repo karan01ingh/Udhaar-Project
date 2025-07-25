@@ -5,7 +5,7 @@ import { authenticateToken } from '../middleware/auth.js';
 import { verifyToken } from '../middleware/verifyToken.js';
 
 const router = express.Router();
-
+// getting transacions with a specific id
 router.get('/:id/transactionsget',verifyToken, async (req, res) => {
   try {
     const transactions = await Transaction.find({ 
