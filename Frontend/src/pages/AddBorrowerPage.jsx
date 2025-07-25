@@ -89,53 +89,7 @@ export default function AddBorrowerPage() {
       setVerifyingOtp(false);
     }
   }
-
-  // const handleSubmit = async (e) => {
-  //   setload(true);
-  //   e.preventDefault();
-  //   if(formData.phoneNumber.length!=10){
-  //     setload(false);
-  //     return toast.error("Phone number should be 10 digits");
-  //   }
-  //   if (!otpVerified){
-  //     setload(false);
-  //         return toast.error('Verify email before submitting');
-  //   }
-      
-
-
-  //   try {
-  //     const res = await axios.post('http://localhost:3001/api/borrowers', {
-  //       ...formData,
-  //       totalBorrowed: parseFloat(formData.totalBorrowed || 0),
-  //       totalPaid: parseFloat(formData.totalPaid || 0),
-  //       totalDue: (formData.totalBorrowed || 0) - (formData.totalPaid || 0),
-  //       createdAt: new Date().toISOString(),
-  //     }, { withCredentials: true });
-  //     toast.success('Borrower added!');
-  //     navigate('/dashboard');
-  //     const newBorrower = res.data;
-  //     //  transaction details
-  //     const initialTransaction = {
-  //       borrowerId: newBorrower._id,
-  //       amount: parseFloat(formData.totalBorrowed || 0), // or totalPaid based on type
-  //       type: 'borrow', // or 'taken', depending on the logic
-  //       date: new Date().toISOString(),
-  //       description: 'Initial borrow on account creation'
-  //     };
-  //     await axios.post(
-  //       'http://localhost:3001/api/transactions/',
-  //       initialTransaction,
-  //       { withCredentials: true }
-  //     );
-  //   } catch (err) {
-  //     toast.error('Failed to add borrower');
-  //   }
-  //   finally {
-  //     setload(false);
-  //   }
-  // };
-
+  
   const handleSubmit = async (e) =>{
   e.preventDefault();
   setload(true);
