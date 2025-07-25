@@ -1,8 +1,5 @@
 import jwt from 'jsonwebtoken';
-
-/**
- * Middleware to verify JWT token from cookie
- */
+// verifying JWt tokens
 export function verifyToken(req, res, next) {
   const token = req.cookies?.access_token;
 
