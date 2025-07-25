@@ -48,7 +48,7 @@ router.post('/signup', async (req, res) => {
     res.status(500).json({ message: 'Internal server error!! TRY AGAIN' });
   }
 });
-
+// Authentication using Google
 router.post('/google', async (req, res) => {
   try {
     const { uid, email, displayName, photoURL } = req.body;
