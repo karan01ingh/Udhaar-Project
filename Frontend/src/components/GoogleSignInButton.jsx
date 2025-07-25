@@ -11,13 +11,13 @@ export default function GoogleSignInButton() {
       console.log("clicked");
     setLoading(true);
     try {
-       console.log("enterning onto loginwithgoogle");
+       // console.log("enterning onto loginwithgoogle");
       await loginWithGoogle();
-       console.log("login with google success");
+       // console.log("login with google success");
       toast.success('Welcome!');
       navigate('/dashboard');
     } catch (error) {
-       console.log("aagya errro ",error);
+       console.log("error:",error);
       toast.error('Failed to sign in with Google');
     } finally {
       setLoading(false);
