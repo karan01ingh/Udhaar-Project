@@ -80,14 +80,14 @@ export function AuthProvider({ children }) {
     
   // }
   async function loginWithGoogle(){
-    console.log("entering into googleprovider");
+    // console.log("entering into googleprovider");
     const provider = new GoogleAuthProvider();
-    console.log("exit from google provider");
+    // console.log("exit from google provider");
     const result = await signInWithPopup(auth, provider);
     const googleUser = result.user;
-    console.log("googleUser",googleUser);
+    // console.log("googleUser",googleUser);
     try {
-      console.log("entering backend");
+      // console.log("entering backend");
       const res=await axios.post('/auth/google', {
         uid: googleUser.uid,
         email: googleUser.email,
@@ -95,7 +95,7 @@ export function AuthProvider({ children }) {
         photoURL: googleUser.photoURL
       },
       {withCredentials:true});
-      console.log("res from backend",res.data.user);
+      // console.log("res from backend",res.data.user);
       setUser(res.data.user);
     } catch (error) {
       console.error('Error syncing with backend:', error);
